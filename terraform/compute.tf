@@ -1,8 +1,8 @@
 module "gce-container" {
-  source          = "terraform-google-modules/container-vm/google"
-  version         = "~> 2.0"
-  cos_imagefamily = "stable"
-  restart_policy  = "Always"
+  source           = "terraform-google-modules/container-vm/google"
+  version          = "~> 2.0"
+  cos_image_family = "stable"
+  restart_policy   = "Always"
 
   container = {
     image = "docker.io/itzg/minecraft-server"
@@ -31,7 +31,7 @@ resource "google_compute_instance" "mc_server" {
 
   boot_disk {
     initialize_params {
-      type  = "pdf-ssd"
+      type  = "pd-ssd" // https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#type
       size  = 100
       image = module.gce-container.source_image
     }
@@ -39,11 +39,12 @@ resource "google_compute_instance" "mc_server" {
 
   network_interface {
     network = "default"
-    access_config {}
+    access_config {} // Ephemeral public ip
   }
 
+  // Logging
   metadata = {
-    gce-container-declaration = moudle.gce-container.metadata_value
+    gce-container-declaration = module.gce-container.metadata_value
     google-logging-enabled    = "true"
     google-monitoring-enabled = "true"
   }
