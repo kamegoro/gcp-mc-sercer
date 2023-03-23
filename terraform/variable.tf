@@ -13,6 +13,7 @@ variable "zone" {
   default = "asia-northest1-a"
 }
 
+# NOTE: GCPのマシンスペック
 variable "machine_type" {
   type    = string
   default = "n1-standard-1"

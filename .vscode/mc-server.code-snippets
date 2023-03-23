@@ -1,0 +1,22 @@
+{
+  "Note comment(//）": {
+    "prefix": "note",
+    "body": "// NOTE: ",
+    "description": "実装上のメモ用のコメント"
+  },
+  "Todo comment(//)": {
+    "prefix": "todo",
+    "body": "// TODO: ",
+    "description": "後で修正したいコメント"
+  },
+  "Hack comment(//)": {
+    "prefix": "hack",
+    "body": "// HACK: ",
+    "description": "最善の解決方法で解決できなかったコードに付けるコメントタグ"
+  },
+  "FIXME comment(//)": {
+    "prefix": "fixme",
+    "body": "// FIXME",
+    "description": "修正が必要な部分につけるコメントタグ"
+  }
+}
