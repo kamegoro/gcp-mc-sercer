@@ -1,16 +1,16 @@
 variable "project" {
   type    = string
-  default = "smaple"
+  default = "mc-server-381513"
 }
 
 variable "region" {
   type    = string
-  default = "asia-northest1"
+  default = "asia-northeast1"
 }
 
 variable "zone" {
   type    = string
-  default = "asia-northest1-a"
+  default = "asia-northeast1-a"
 }
 
 # NOTE: GCPのマシンスペック
