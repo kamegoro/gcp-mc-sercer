@@ -16,7 +16,7 @@ variable "zone" {
 # NOTE: GCPのマシンスペック
 variable "machine_type" {
   type    = string
-  default = "n1-standard-1"
+  default = "n2-standard-2"
 }
 
 variable "network_tags" {
