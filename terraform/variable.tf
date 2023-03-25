@@ -3,6 +3,11 @@ variable "project" {
   default = "smaple"
 }
 
+variable "credentials" {
+  type    = string
+  default = ""
+}
+
 variable "region" {
   type    = string
   default = "asia-northeast1"
