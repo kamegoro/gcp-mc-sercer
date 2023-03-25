@@ -24,7 +24,7 @@ module "gce-container" {
 }
 
 resource "google_compute_instance" "mc_server" {
-  name         = "mc-server-381513"
+  name         = var.project
   machine_type = var.machine_type
   zone         = var.zone
   tags         = var.network_tags

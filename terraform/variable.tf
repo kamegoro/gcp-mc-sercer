@@ -1,6 +1,6 @@
 variable "project" {
   type    = string
-  default = "mc-server-381513"
+  default = "smaple"
 }
 
 variable "region" {
