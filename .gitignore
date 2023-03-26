@@ -3,4 +3,5 @@ terraform/terraform.tfstate
 terraform/terraform.tfvars
 terraform/terraform.tfstate.backup
 mc-server-terraform_serviceaccount_credential.json
-.env
+src/.env
+src/discordbot.py

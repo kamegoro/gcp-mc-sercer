@@ -17,7 +17,7 @@ compute = build('compute', 'v1')
 
 #サーバー起動処理
 def server_start():
-    res = compute.instances().start(project=GCP_PROJECT_NAME, zone=MINECRAFT_INSTANCE_ZONE, instance=MINECRAFT_INSTANCE_NAME).execute()
+    compute.instances().start(project=GCP_PROJECT_NAME, zone=MINECRAFT_INSTANCE_ZONE, instance=MINECRAFT_INSTANCE_NAME).execute()
     return
 #サーバー停止処理
 def server_stop():
@@ -41,12 +41,14 @@ async def on_message(message):
         server_start()
         time.sleep(30)
         result = server_status()
+        time.sleep(5)
         if result[0] == 'RUNNING':
             await message.channel.send('サーバーは起動済みです\nIP: ' + str(result[1]))
             return
 
         time.sleep(30)
         result = server_status()
+        time.sleep(5)
         if result[0] == 'RUNNING':
             await message.channel.send('サーバーは起動済みです')
             return
@@ -55,20 +57,23 @@ async def on_message(message):
         await message.channel.send('サーバーを停止します...')
         server_stop()
         time.sleep(30)
-        status = server_status()[0]
-        if status in { 'TERMINATED', 'STOPPING', 'SUSPENDED', 'SUSPENDING' }:
+        result = server_status()
+        time.sleep(5)
+        if result[0] in { 'TERMINATED', 'STOPPING', 'SUSPENDED', 'SUSPENDING' }:
             await message.channel.send('サーバーを停止しました')
             return
 
         time.sleep(30)
-        status = server_status()[0]
-        if status in { 'TERMINATED', 'STOPPING', 'SUSPENDED', 'SUSPENDING' }:
+        result = server_status()
+        time.sleep(5)
+        if result[0] in { 'TERMINATED', 'STOPPING', 'SUSPENDED', 'SUSPENDING' }:
             await message.channel.send('サーバーを停止しました')
             return
 
     if message.content == '/status minecraft':
         await message.channel.send('サーバーの状態を確認中です...')
         result = server_status()
+        time.sleep(5)
         if result[0] == 'RUNNING':
             await message.channel.send('サーバーは起動済みです\nIP: ' + str(result[1]))
         if result[0] == 'STAGING':
