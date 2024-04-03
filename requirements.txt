@@ -2,4 +2,4 @@ discord.py[voice]
 flake8==7.0.0
 black==24.3.0
 python-dotenv==1.0.1
-google-api-python-client==2.124.0
+google-api-python-client==2.125.0
